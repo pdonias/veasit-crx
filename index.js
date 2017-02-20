@@ -19,13 +19,17 @@ if (button) {
     e.preventDefault()
     console.log(`Add ${window.location.href}`)
 
-    var url = {"link": window.location.href};
+    var url = { link: window.location.href, email: 'example@email.com' }
 
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.open("POST", "http://127.0.0.1:5000/update");
-    xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify(url));
-
+    var xmlhttp = new XMLHttpRequest()   // new HttpRequest instance
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log('RESPONSE = ', xmlhttp.response)
+      }
+    }
+    xmlhttp.open('POST', 'https://httpbin.org/post')
+    xmlhttp.setRequestHeader('Content-Type', 'application/json')
+    xmlhttp.send(encodeURI(JSON.stringify(url)))
   }
 
   button.parentNode.appendChild(addButton)
