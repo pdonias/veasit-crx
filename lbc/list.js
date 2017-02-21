@@ -1,38 +1,3 @@
-const phoneButton = document.getElementsByClassName('button-orange large phoneNumber trackable')[0]
-const emailButton = document.getElementsByClassName('button-blue large trackable')[0]
-const button = phoneButton || emailButton
-
-if (button) {
-  const icon = document.createElement('I')
-  icon.setAttribute('class', 'icon-cv-plus icon-2x')
-
-  const text = document.createElement('SPAN')
-  text.innerHTML = 'Ajouter à visit.me'
-
-  const addButton = document.createElement('BUTTON')
-  addButton.setAttribute('class', 'button-orange button-secondary large trackable')
-  addButton.style['margin-top'] = '1rem'
-  addButton.appendChild(icon)
-  addButton.appendChild(text)
-
-  addButton.onclick = e => {
-    e.preventDefault()
-    console.log(`Add ${window.location.href}`)
-
-    var url = {"link": window.location.href};
-
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.open("POST", "http://127.0.0.1:5000/update");
-    xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify(url));
-
-  }
-
-  button.parentNode.appendChild(addButton)
-}
-
-// =============================================================================
-
 const itemTitles = document.getElementsByClassName('item_title')
 const saveButtons = document.getElementsByClassName('saveAd')
 
@@ -71,4 +36,4 @@ for (const saveButton of _saveButtons) {
   saveButton.parentNode.appendChild(wrapper)
 }
 
-console.log('--- visit.me extension loaded ---')
+console.log('LOADED LIST')
