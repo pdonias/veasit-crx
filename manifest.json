@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
 
-  "name": "Visit me",
+  "name": "Veasit",
   "description": "",
-  "version": "1.0",
+  "version": "0.0.1.0",
 
   "browser_action": {
     "default_icon": "icon.svg",
@@ -16,8 +16,18 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://www.leboncoin.fr/*"],
-      "js": ["index.js"]
+      "matches": [
+        "https://www.leboncoin.fr/*"
+      ],
+      "js": ["utils.js"]
+    },
+    {
+      "matches": ["https://www.leboncoin.fr/annonces/offres/*"],
+      "js": ["lbc/list.js"]
+    },
+    {
+      "matches": ["https://www.leboncoin.fr/locations/*", "https://www.leboncoin.fr/ventes_immobilieres/*"],
+      "js": ["lbc/annonce.js"]
     }
   ]
 }
